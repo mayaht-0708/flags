@@ -1,0 +1,373 @@
+---
+title: "🌍 World Flag Explorer"
+subtitle: "Discover flags by their colors, patterns, and shapes"
+format:
+  html:
+    theme: cosmo
+    page-layout: full
+resources:
+  - w2560/*.png
+execute:
+  echo: false
+---
+
+```{=html}
+<style>
+  body {
+    background: linear-gradient(135deg, #f0f4ff 0%, #fef6ff 50%, #f0fdf4 100%);
+    min-height: 100vh;
+  }
+  #title-block-header {
+    background: linear-gradient(120deg, #1e3a8a, #4f46e5, #0ea5e9);
+    color: white;
+    padding: 2.2rem 2rem;
+    border-radius: 18px;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
+    text-align: center;
+  }
+  #title-block-header .title {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.3rem;
+  }
+  #title-block-header .subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .controls-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1.8rem;
+  }
+  .controls-bar form {
+    margin: 0 !important;
+    font-weight: 600;
+  }
+  .random-btn {
+    background: linear-gradient(135deg, #f59e0b, #ec4899);
+    color: white;
+    border: none;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .random-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(236, 72, 153, 0.4);
+  }
+  .hero-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    margin-bottom: 2.2rem;
+  }
+  .hero-flag-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    padding: 1.2rem;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+  }
+  .hero-flag-wrap img {
+    max-width: 480px;
+    max-height: 290px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  }
+  .badge-pill {
+    display: inline-block;
+    background: #eef2ff;
+    color: #4338ca;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0 1rem 0;
+  }
+  .section-heading h3 {
+    margin: 0;
+    font-weight: 800;
+    color: #1e293b;
+  }
+  .hint-text {
+    font-size: 0.88rem;
+    color: #64748b;
+  }
+  .flag-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .flag-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.1rem;
+    text-align: center;
+    border: 2px solid transparent;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .flag-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 26px rgba(79, 70, 229, 0.16);
+    border-color: #6366f1;
+  }
+  .flag-card.opposite-card:hover {
+    border-color: #f43f5e;
+    box-shadow: 0 12px 26px rgba(244, 63, 94, 0.18);
+  }
+  .flag-card-img-box {
+    height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .flag-card-img-box img {
+    max-width: 100%;
+    max-height: 125px;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  .rank-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.4rem;
+  }
+  .rank-sim {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  .rank-opp {
+    background: #ffe4e6;
+    color: #be123c;
+  }
+</style>
+```
+
+```{r}
+# Read all PNG filenames from w2560/
+flag_files <- sort(list.files("w2560", pattern = "\\.png$"))
+
+# Compute a combined RGB color + spatial design + shape feature vector for each flag
+get_flag_features <- \(f) {
+  img <- png::readPNG(file.path("w2560", f), native = TRUE)
+  d <- dim(img)
+  rows <- round(seq(1, d[1], length.out = 48))
+  cols <- round(seq(1, d[2], length.out = 72))
+  sub <- img[rows, cols]
+  r <- bitwAnd(sub, 255L) / 255
+  g <- bitwAnd(bitwShiftR(sub, 8L), 255L) / 255
+  b <- bitwAnd(bitwShiftR(sub, 16L), 255L) / 255
+  a <- bitwAnd(bitwShiftR(sub, 24L), 255L) / 255
+  dim(r) <- dim(g) <- dim(b) <- dim(a) <- c(48, 72)
+
+  # 1. Global 64-bin RGB color histogram (overall color palette)
+  bins <- floor(r * 3.999) * 16L + floor(g * 3.999) * 4L + floor(b * 3.999) + 1L
+  hist_feat <- tabulate(bins, nbins = 64L) / length(bins)
+
+  # 2. Regional color layout across a 4x6 grid (canton, center emblem, bands)
+  rg <- rep(1:4, each = 12)
+  cg <- rep(1:6, each = 12)
+  reg_mean <- \(m) as.vector(tapply(m, list(rg[row(m)], cg[col(m)]), mean))
+  reg_rgb <- c(reg_mean(r), reg_mean(g), reg_mean(b)) / sqrt(72)
+
+  # 3. Design & shape features: aspect ratio, non-rectangular shape, stripes, star/badge detail
+  dy <- abs(r[-1, ] - r[-48, ]) + abs(g[-1, ] - g[-48, ]) + abs(b[-1, ] - b[-48, ])
+  dx <- abs(r[, -1] - r[, -72]) + abs(g[, -1] - g[, -72]) + abs(b[, -1] - b[, -72])
+  rg_e <- rep(1:4, length.out = 47)
+  cg_e <- rep(1:6, length.out = 71)
+  reg_dy <- pmin(as.vector(tapply(dy[, -72], list(rg_e[row(dy[, -72])], cg_e[col(dy[, -72])]), mean)), 0.5)
+  reg_dx <- pmin(as.vector(tapply(dx[-48, ], list(rg_e[row(dx[-48, ])], cg_e[col(dx[-48, ])]), mean)), 0.5)
+  stripe_dir <- c(mean(dy), mean(dx), sd(rowMeans(dy)), sd(colMeans(dx)))
+  shape_feat <- c((d[2] / d[1]) / 2, 1 - mean(a))
+
+  c(hist_feat * 1.2, reg_rgb * 1.4, reg_dy * 0.8, reg_dx * 0.8, stripe_dir * 0.8, shape_feat * 0.5)
+}
+
+feat_mat <- do.call(rbind, lapply(flag_files, get_flag_features))
+dist_mat <- as.matrix(dist(feat_mat))
+rownames(dist_mat) <- colnames(dist_mat) <- flag_files
+
+# Center and L2-normalize features so the most different flag reflects true opposite color/shape/design
+centered <- scale(feat_mat, center = TRUE, scale = FALSE)
+normed <- centered / sqrt(rowSums(centered^2))
+opp_dist_mat <- as.matrix(dist(normed))
+rownames(opp_dist_mat) <- colnames(opp_dist_mat) <- flag_files
+
+# For each flag, find the 3 most similar flags and the 1 most different flag
+similar_map <- setNames(
+  lapply(flag_files, \(f) {
+    others <- dist_mat[f, setdiff(flag_files, f)]
+    names(sort(others)[1:3])
+  }),
+  flag_files
+)
+
+most_diff_map <- setNames(
+  lapply(flag_files, \(f) {
+    others <- opp_dist_mat[f, setdiff(flag_files, f)]
+    names(which.max(others))
+  }),
+  flag_files
+)
+
+ojs_define(
+  flag_files = flag_files,
+  similar_map = similar_map,
+  most_diff_map = most_diff_map
+)
+```
+
+```{ojs}
+// Convert 2-letter ISO codes (like "us") into readable names (like "United States")
+regionNames = new Intl.DisplayNames(["en"], { type: "region" })
+
+customNames = ({
+  "gb-eng": "England",
+  "gb-nir": "Northern Ireland",
+  "gb-sct": "Scotland",
+  "gb-wls": "Wales"
+})
+
+getName = (file) => {
+  const code = file.replace(".png", "");
+  return customNames[code] ?? regionNames.of(code.toUpperCase()) ?? code;
+}
+
+// Build a sorted list of { name, file } objects for the dropdown
+flags = flag_files
+  .map(file => ({ name: getName(file), file }))
+  .sort((a, b) => a.name.localeCompare(b.name))
+
+// Dropdown menu for selecting a flag
+viewof selected = Inputs.select(flags, {
+  label: "🔍 Choose a country or territory:",
+  format: d => d.name,
+  value: flags.find(d => d.file === "us.png")
+})
+
+// Helper to jump to any flag when a card or the random button is clicked
+selectFlag = (file) => {
+  const target = flags.find(d => d.file === file);
+  if (target) {
+    viewof selected.value = target;
+    viewof selected.dispatchEvent(new Event("input", { bubbles: true }));
+  }
+}
+
+// Surprise Me button to pick a random flag
+{
+  const btn = html`<button class="random-btn" type="button">🎲 Surprise Me with a Random Flag!</button>`;
+  btn.onclick = () => {
+    const randomItem = flags[Math.floor(Math.random() * flags.length)];
+    selectFlag(randomItem.file);
+  };
+  return html`<div style="text-align: center; margin-bottom: 1.5rem;">${btn}</div>`;
+}
+
+// Look up the 3 most similar flags and the 1 most different flag
+similarFlags = similar_map[selected.file].map((file, idx) => ({
+  file,
+  name: getName(file),
+  rank: idx + 1
+}))
+
+mostDiffFlag = ({
+  file: most_diff_map[selected.file],
+  name: getName(most_diff_map[selected.file])
+})
+
+// Display the interactive dashboard
+{
+  const container = html`<div>
+    <div class="hero-card">
+      <div class="hero-flag-wrap">
+        <img src="w2560/${selected.file}" alt="${selected.name} flag">
+      </div>
+      <h2 style="margin: 1rem 0 0.2rem 0; font-weight: 800; color: #0f172a;">
+        ${selected.name}
+        <span class="badge-pill">${selected.file.replace(".png", "").toUpperCase()}</span>
+      </h2>
+    </div>
+
+    <div class="section-heading">
+      <h3>✨ 3 Flags with Similar Color &amp; Design</h3>
+      <span class="hint-text">💡 Click any flag card to explore it!</span>
+    </div>
+    <div class="flag-grid">
+      ${similarFlags.map(f => {
+        const card = html`
+          <div class="flag-card" title="Click to view ${f.name}">
+            <span class="rank-tag rank-sim">Match #${f.rank}</span>
+            <div class="flag-card-img-box">
+              <img src="w2560/${f.file}" alt="${f.name} flag">
+            </div>
+            <div style="font-weight: 700; font-size: 1.02rem; color: #1e293b;">${f.name}</div>
+            <div style="color: #64748b; font-size: 0.82rem;">${f.file}</div>
+          </div>
+        `;
+        card.onclick = () => selectFlag(f.file);
+        return card;
+      })}
+    </div>
+
+    <div class="section-heading" style="margin-top: 2.5rem;">
+      <h3>⚡ Most Different Flag in Color &amp; Shape</h3>
+      <span class="hint-text">Opposite in palette, layout &amp; proportions</span>
+    </div>
+    <div style="max-width: 320px;">
+      ${(() => {
+        const oppCard = html`
+          <div class="flag-card opposite-card" title="Click to view ${mostDiffFlag.name}">
+            <span class="rank-tag rank-opp">Polar Opposite</span>
+            <div class="flag-card-img-box">
+              <img src="w2560/${mostDiffFlag.file}" alt="${mostDiffFlag.name} flag">
+            </div>
+            <div style="font-weight: 700; font-size: 1.02rem; color: #1e293b;">${mostDiffFlag.name}</div>
+            <div style="color: #64748b; font-size: 0.82rem;">${mostDiffFlag.file}</div>
+          </div>
+        `;
+        oppCard.onclick = () => selectFlag(mostDiffFlag.file);
+        return oppCard;
+      })()}
+    </div>
+  </div>`;
+  return container;
+}
+```

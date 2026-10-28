@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>🌍 World Flag Explorer</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="flags_files/libs/clipboard/clipboard.min.js"></script>
+<script src="flags_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="flags_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="flags_files/libs/quarto-html/popper.min.js"></script>
+<script src="flags_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="flags_files/libs/quarto-html/anchor.min.js"></script>
+<link href="flags_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="flags_files/libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="flags_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="flags_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="flags_files/libs/bootstrap/bootstrap-56e448b41fc2946e60567e489e7221ba.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script type="module" src="flags_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="flags_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script type="ojs-define">
+{"contents":[{"name":"flag_files","value":["ad.png","ae.png","af.png","ag.png","ai.png","al.png","am.png","ao.png","aq.png","ar.png","as.png","at.png","au.png","aw.png","ax.png","az.png","ba.png","bb.png","bd.png","be.png","bf.png","bg.png","bh.png","bi.png","bj.png","bl.png","bm.png","bn.png","bo.png","bq.png","br.png","bs.png","bt.png","bv.png","bw.png","by.png","bz.png","ca.png","cc.png","cd.png","cf.png","cg.png","ch.png","ci.png","ck.png","cl.png","cm.png","cn.png","co.png","cr.png","cu.png","cv.png","cw.png","cx.png","cy.png","cz.png","de.png","dj.png","dk.png","dm.png","do.png","dz.png","ec.png","ee.png","eg.png","eh.png","er.png","es.png","et.png","fi.png","fj.png","fk.png","fm.png","fo.png","fr.png","ga.png","gb-eng.png","gb-nir.png","gb-sct.png","gb-wls.png","gb.png","gd.png","ge.png","gf.png","gg.png","gh.png","gi.png","gl.png","gm.png","gn.png","gp.png","gq.png","gr.png","gs.png","gt.png","gu.png","gw.png","gy.png","hk.png","hm.png","hn.png","hr.png","ht.png","hu.png","id.png","ie.png","il.png","im.png","in.png","io.png","iq.png","ir.png","is.png","it.png","je.png","jm.png","jo.png","jp.png","ke.png","kg.png","kh.png","ki.png","km.png","kn.png","kp.png","kr.png","kw.png","ky.png","kz.png","la.png","lb.png","lc.png","li.png","lk.png","lr.png","ls.png","lt.png","lu.png","lv.png","ly.png","ma.png","mc.png","md.png","me.png","mf.png","mg.png","mh.png","mk.png","ml.png","mm.png","mn.png","mo.png","mp.png","mq.png","mr.png","ms.png","mt.png","mu.png","mv.png","mw.png","mx.png","my.png","mz.png","na.png","nc.png","ne.png","nf.png","ng.png","ni.png","nl.png","no.png","np.png","nr.png","nu.png","nz.png","om.png","pa.png","pe.png","pf.png","pg.png","ph.png","pk.png","pl.png","pm.png","pn.png","pr.png","ps.png","pt.png","pw.png","py.png","qa.png","re.png","ro.png","rs.png","ru.png","rw.png","sa.png","sb.png","sc.png","sd.png","se.png","sg.png","sh.png","si.png","sj.png","sk.png","sl.png","sm.png","sn.png","so.png","sr.png","ss.png","st.png","sv.png","sx.png","sy.png","sz.png","tc.png","td.png","tf.png","tg.png","th.png","tj.png","tk.png","tl.png","tm.png","tn.png","to.png","tr.png","tt.png","tv.png","tw.png","tz.png","ua.png","ug.png","um.png","us.png","uy.png","uz.png","va.png","vc.png","ve.png","vg.png","vi.png","vn.png","vu.png","wf.png","ws.png","xk.png","ye.png","yt.png","za.png","zm.png","zw.png"]},{"name":"similar_map","value":{"ad.png":["gd.png","ht.png","bz.png"],"ae.png":["ps.png","sd.png","jo.png"],"af.png":["gp.png","pt.png","za.png"],"ag.png":["tl.png","pg.png","mv.png"],"ai.png":["sh.png","tc.png","ms.png"],"al.png":["kg.png","im.png","me.png"],"am.png":["lt.png","gm.png","ph.png"],"ao.png":["pg.png","ly.png","mq.png"],"aq.png":["hn.png","kz.png","tv.png"],"ar.png":["sm.png","fm.png","so.png"],"as.png":["do.png","fk.png","ai.png"],"at.png":["lb.png","pf.png","hu.png"],"au.png":["nz.png","ck.png","ky.png"],"aw.png":["bw.png","ar.png","fm.png"],"ax.png":["se.png","is.png","gb-sct.png"],"az.png":["rw.png","nc.png","hn.png"],"ba.png":["mp.png","hm.png","cv.png"],"bb.png":["cw.png","ms.png","tc.png"],"bd.png":["tg.png","gd.png","km.png"],"be.png":["ad.png","km.png","vu.png"],"bf.png":["mr.png","cg.png","gw.png"],"bg.png":["ru.png","sk.png","si.png"],"bh.png":["om.png","tt.png","bi.png"],"bi.png":["mx.png","bh.png","je.png"],"bj.png":["cg.png","gw.png","gn.png"],"bl.png":["kr.png","yt.png","vi.png"],"bm.png":["wf.png","kg.png","im.png"],"bn.png":["nu.png","ec.png","bt.png"],"bo.png":["gh.png","gm.png","zw.png"],"bq.png":["sx.png","mp.png","ba.png"],"br.png":["gy.png","vu.png","gb-wls.png"],"bs.png":["sv.png","sb.png","tf.png"],"bt.png":["nu.png","bn.png","ec.png"],"bv.png":["no.png","sj.png","qa.png"],"bw.png":["aw.png","ar.png","so.png"],"by.png":["mv.png","pt.png","wf.png"],"bz.png":["ht.png","ad.png","mh.png"],"ca.png":["pe.png","mt.png","pf.png"],"cc.png":["zm.png","tm.png","st.png"],"cd.png":["re.png","ni.png","ga.png"],"cf.png":["gq.png","et.png","ml.png"],"cg.png":["bj.png","it.png","bf.png"],"ch.png":["hk.png","tr.png","cn.png"],"ci.png":["it.png","gn.png","ie.png"],"ck.png":["ky.png","pn.png","gs.png"],"cl.png":["cz.png","ru.png","tw.png"],"cm.png":["ml.png","ro.png","td.png"],"cn.png":["ma.png","hk.png","vn.png"],"co.png":["ec.png","mm.png","gw.png"],"cr.png":["kh.png","cu.png","cv.png"],"cu.png":["cr.png","kh.png","ph.png"],"cv.png":["ph.png","kh.png","ba.png"],"cw.png":["nr.png","tc.png","sh.png"],"cx.png":["zm.png","tc.png","ms.png"],"cy.png":["jp.png","gb-nir.png","bl.png"],"cz.png":["cl.png","pl.png","gl.png"],"de.png":["mw.png","ag.png","ug.png"],"dj.png":["sm.png","ar.png","sl.png"],"dk.png":["tt.png","om.png","bh.png"],"dm.png":["sa.png","sr.png","tj.png"],"do.png":["as.png","li.png","fr.png"],"dz.png":["nf.png","in.png","pk.png"],"ec.png":["co.png","mm.png","ve.png"],"ee.png":["rs.png","th.png","ga.png"],"eg.png":["ye.png","iq.png","sd.png"],"eh.png":["jo.png","ps.png","sy.png"],"er.png":["sc.png","ag.png","mk.png"],"es.png":["lk.png","lv.png","lt.png"],"et.png":["ml.png","kn.png","gq.png"],"fi.png":["gb-nir.png","cy.png","pa.png"],"fj.png":["sm.png","aw.png","ar.png"],"fk.png":["ai.png","ms.png","vg.png"],"fm.png":["so.png","ar.png","aw.png"],"fo.png":["je.png","gb-eng.png","gb-sct.png"],"fr.png":["mf.png","ro.png","td.png"],"ga.png":["nc.png","gw.png","bj.png"],"gb-eng.png":["je.png","fo.png","lr.png"],"gb-nir.png":["ge.png","cy.png","jp.png"],"gb-sct.png":["fo.png","ax.png","is.png"],"gb-wls.png":["gy.png","om.png","vu.png"],"gb.png":["ki.png","as.png","do.png"],"gd.png":["ad.png","tg.png","vu.png"],"ge.png":["gb-nir.png","sg.png","gg.png"],"gf.png":["st.png","ml.png","mm.png"],"gg.png":["gb-nir.png","sg.png","ge.png"],"gh.png":["bo.png","gw.png","mu.png"],"gi.png":["mt.png","pf.png","sk.png"],"gl.png":["pl.png","cz.png","cl.png"],"gm.png":["bo.png","sc.png","py.png"],"gn.png":["gw.png","bj.png","mu.png"],"gp.png":["af.png","pg.png","za.png"],"gq.png":["et.png","ae.png","lb.png"],"gr.png":["sv.png","uy.png","sz.png"],"gs.png":["pn.png","ck.png","vg.png"],"gt.png":["fo.png","je.png","km.png"],"gu.png":["ky.png","pn.png","fk.png"],"gw.png":["bj.png","gn.png","co.png"],"gy.png":["br.png","vu.png","gb-wls.png"],"hk.png":["tn.png","cn.png","tr.png"],"hm.png":["mp.png","ba.png","bq.png"],"hn.png":["aq.png","lu.png","kz.png"],"hr.png":["py.png","iq.png","pf.png"],"ht.png":["bz.png","ad.png","np.png"],"hu.png":["at.png","lu.png","py.png"],"id.png":["mc.png","sg.png","lb.png"],"ie.png":["ng.png","ci.png","bg.png"],"il.png":["ge.png","bl.png","cr.png"],"im.png":["tr.png","hk.png","tn.png"],"in.png":["ne.png","mg.png","sy.png"],"io.png":["pm.png","gb-wls.png","vi.png"],"iq.png":["eg.png","ye.png","sd.png"],"ir.png":["pf.png","lb.png","gq.png"],"is.png":["xk.png","ax.png","se.png"],"it.png":["fr.png","mf.png","cg.png"],"je.png":["fo.png","gb-eng.png","bi.png"],"jm.png":["lt.png","za.png","ly.png"],"jo.png":["eh.png","ps.png","sd.png"],"jp.png":["cy.png","gb-nir.png","gg.png"],"ke.png":["ss.png","sr.png","zw.png"],"kg.png":["al.png","im.png","me.png"],"kh.png":["cv.png","ph.png","cr.png"],"ki.png":["gb.png","do.png","sc.png"],"km.png":["be.png","ad.png","gy.png"],"kn.png":["ml.png","et.png","sn.png"],"kp.png":["sc.png","mn.png","er.png"],"kr.png":["vi.png","bl.png","yt.png"],"kw.png":["eh.png","jo.png","sd.png"],"ky.png":["ck.png","nz.png","pn.png"],"kz.png":["tv.png","aq.png","hn.png"],"la.png":["li.png","ve.png","td.png"],"lb.png":["pf.png","at.png","hu.png"],"lc.png":["dj.png","sm.png","nc.png"],"li.png":["la.png","td.png","ro.png"],"lk.png":["es.png","jm.png","sx.png"],"lr.png":["qa.png","bv.png","no.png"],"ls.png":["nc.png","py.png","ss.png"],"lt.png":["am.png","ve.png","mm.png"],"lu.png":["hu.png","py.png","lb.png"],"lv.png":["es.png","nl.png","ke.png"],"ly.png":["mq.png","ao.png","pg.png"],"ma.png":["cn.png","hk.png","tr.png"],"mc.png":["id.png","sg.png","lb.png"],"md.png":["ec.png","mn.png","et.png"],"me.png":["mk.png","im.png","tl.png"],"mf.png":["fr.png","ro.png","td.png"],"mg.png":["pk.png","mt.png","in.png"],"mh.png":["bz.png","mp.png","hm.png"],"mk.png":["me.png","tl.png","im.png"],"ml.png":["sn.png","mm.png","et.png"],"mm.png":["ml.png","ec.png","ve.png"],"mn.png":["kp.png","md.png","tl.png"],"mo.png":["jm.png","lt.png","cm.png"],"mp.png":["hm.png","ba.png","bq.png"],"mq.png":["ly.png","ao.png","pg.png"],"mr.png":["bf.png","cg.png","bj.png"],"ms.png":["nz.png","sh.png","ai.png"],"mt.png":["gi.png","pf.png","lb.png"],"mu.png":["gn.png","td.png","ro.png"],"mv.png":["tl.png","tr.png","wf.png"],"mw.png":["kn.png","ag.png","pg.png"],"mx.png":["bi.png","bh.png","ad.png"],"my.png":["um.png","us.png","dk.png"],"mz.png":["zw.png","cm.png","jm.png"],"na.png":["nc.png","za.png","mp.png"],"nc.png":["ga.png","na.png","ph.png"],"ne.png":["in.png","ps.png","cf.png"],"nf.png":["pk.png","dz.png","sb.png"],"ng.png":["ie.png","it.png","ci.png"],"ni.png":["sl.png","cd.png","ga.png"],"nl.png":["hu.png","sv.png","py.png"],"no.png":["bv.png","sj.png","qa.png"],"np.png":["ad.png","ht.png","gd.png"],"nr.png":["cw.png","tc.png","sh.png"],"nu.png":["bn.png","bt.png","va.png"],"nz.png":["sh.png","ms.png","au.png"],"om.png":["bh.png","tt.png","gd.png"],"pa.png":["gi.png","gb-nir.png","mt.png"],"pe.png":["wf.png","to.png","mv.png"],"pf.png":["lb.png","at.png","mt.png"],"pg.png":["ao.png","ag.png","ly.png"],"ph.png":["cv.png","kh.png","cl.png"],"pk.png":["mg.png","nf.png","sb.png"],"pl.png":["gl.png","cz.png","cl.png"],"pm.png":["io.png","gb-wls.png","vi.png"],"pn.png":["gs.png","vg.png","ky.png"],"pr.png":["pf.png","lb.png","cl.png"],"ps.png":["ae.png","eh.png","jo.png"],"pt.png":["mv.png","by.png","ag.png"],"pw.png":["km.png","gy.png","ax.png"],"py.png":["hr.png","hu.png","lu.png"],"qa.png":["bv.png","no.png","sj.png"],"re.png":["cd.png","pr.png","ni.png"],"ro.png":["td.png","fr.png","mf.png"],"rs.png":["sg.png","mc.png","pf.png"],"ru.png":["bg.png","si.png","sk.png"],"rw.png":["az.png","aq.png","tz.png"],"sa.png":["dm.png","pk.png","sb.png"],"sb.png":["bs.png","tf.png","pk.png"],"sc.png":["kp.png","mv.png","bo.png"],"sd.png":["iq.png","eg.png","ye.png"],"se.png":["ax.png","is.png","xk.png"],"sg.png":["mc.png","id.png","pf.png"],"sh.png":["tc.png","ai.png","nz.png"],"si.png":["ru.png","bg.png","sk.png"],"sj.png":["bv.png","no.png","qa.png"],"sk.png":["ru.png","bg.png","gi.png"],"sl.png":["ni.png","gq.png","ps.png"],"sm.png":["ar.png","dj.png","gb-nir.png"],"sn.png":["ml.png","kn.png","et.png"],"so.png":["fm.png","ar.png","aw.png"],"sr.png":["ke.png","dm.png","tj.png"],"ss.png":["mq.png","mw.png","ly.png"],"st.png":["gf.png","zm.png","cc.png"],"sv.png":["tf.png","nl.png","bs.png"],"sx.png":["bq.png","za.png","mp.png"],"sy.png":["eh.png","jo.png","kw.png"],"sz.png":["sb.png","kp.png","sx.png"],"tc.png":["sh.png","ai.png","ms.png"],"td.png":["ro.png","fr.png","mf.png"],"tf.png":["sv.png","sb.png","bs.png"],"tg.png":["gd.png","bd.png","vu.png"],"th.png":["cr.png","cf.png","ve.png"],"tj.png":["py.png","hu.png","sr.png"],"tk.png":["cw.png","tc.png","ms.png"],"tl.png":["im.png","me.png","wf.png"],"tm.png":["cc.png","zm.png","tz.png"],"tn.png":["hk.png","tr.png","cn.png"],"to.png":["ws.png","tr.png","ma.png"],"tr.png":["hk.png","tn.png","cn.png"],"tt.png":["bh.png","om.png","gd.png"],"tv.png":["kz.png","aq.png","tz.png"],"tw.png":["wf.png","cl.png","ag.png"],"tz.png":["zm.png","cx.png","rw.png"],"ua.png":["bs.png","de.png","et.png"],"ug.png":["de.png","ec.png","ve.png"],"um.png":["us.png","fo.png","km.png"],"us.png":["um.png","fo.png","km.png"],"uy.png":["gr.png","bl.png","yt.png"],"uz.png":["dj.png","hn.png","do.png"],"va.png":["nu.png","bn.png","bt.png"],"vc.png":["bb.png","td.png","ro.png"],"ve.png":["mm.png","td.png","ro.png"],"vg.png":["pn.png","gs.png","fk.png"],"vi.png":["kr.png","yt.png","bl.png"],"vn.png":["cn.png","hk.png","tn.png"],"vu.png":["gy.png","gd.png","br.png"],"wf.png":["im.png","tr.png","tl.png"],"ws.png":["ma.png","to.png","tr.png"],"xk.png":["is.png","se.png","ax.png"],"ye.png":["eg.png","iq.png","sd.png"],"yt.png":["vi.png","bl.png","kr.png"],"za.png":["kh.png","na.png","sx.png"],"zm.png":["cc.png","tm.png","kn.png"],"zw.png":["bo.png","mz.png","sc.png"]}},{"name":"most_diff_map","value":{"ad.png":"lu.png","ae.png":"ad.png","af.png":"pl.png","ag.png":"il.png","ai.png":"pf.png","al.png":"sl.png","am.png":"io.png","ao.png":"fo.png","aq.png":"al.png","ar.png":"al.png","as.png":"mk.png","at.png":"br.png","au.png":"pf.png","aw.png":"kg.png","ax.png":"ru.png","az.png":"dk.png","ba.png":"dk.png","bb.png":"dk.png","bd.png":"pl.png","be.png":"pl.png","bf.png":"io.png","bg.png":"ax.png","bh.png":"vc.png","bi.png":"de.png","bj.png":"fo.png","bl.png":"li.png","bm.png":"sl.png","bn.png":"li.png","bo.png":"fi.png","bq.png":"li.png","br.png":"pl.png","bs.png":"dk.png","bt.png":"ht.png","bv.png":"gw.png","bw.png":"dk.png","by.png":"il.png","bz.png":"pl.png","ca.png":"se.png","cc.png":"je.png","cd.png":"al.png","cf.png":"dk.png","cg.png":"fo.png","ch.png":"pw.png","ci.png":"dk.png","ck.png":"lb.png","cl.png":"gy.png","cm.png":"je.png","cn.png":"gb-sct.png","co.png":"io.png","cr.png":"ky.png","cu.png":"md.png","cv.png":"dk.png","cw.png":"dk.png","cx.png":"dk.png","cy.png":"vu.png","cz.png":"gy.png","de.png":"gb-wls.png","dj.png":"tt.png","dk.png":"vc.png","dm.png":"ki.png","do.png":"sr.png","dz.png":"al.png","ec.png":"io.png","ee.png":"dk.png","eg.png":"ad.png","eh.png":"gb-eng.png","er.png":"fo.png","es.png":"gb-wls.png","et.png":"gb-eng.png","fi.png":"bo.png","fj.png":"to.png","fk.png":"pf.png","fm.png":"tt.png","fo.png":"gh.png","fr.png":"tg.png","ga.png":"tt.png","gb-eng.png":"mu.png","gb-nir.png":"bo.png","gb-sct.png":"ws.png","gb-wls.png":"de.png","gb.png":"ua.png","gd.png":"sl.png","ge.png":"tk.png","gf.png":"om.png","gg.png":"af.png","gh.png":"fo.png","gi.png":"gu.png","gl.png":"br.png","gm.png":"io.png","gn.png":"lr.png","gp.png":"lb.png","gq.png":"vu.png","gr.png":"vn.png","gs.png":"lb.png","gt.png":"ws.png","gu.png":"lb.png","gw.png":"fo.png","gy.png":"pl.png","hk.png":"gb-sct.png","hm.png":"lb.png","hn.png":"al.png","hr.png":"mz.png","ht.png":"lu.png","hu.png":"ad.png","id.png":"br.png","ie.png":"tt.png","il.png":"me.png","im.png":"il.png","in.png":"tt.png","io.png":"gh.png","iq.png":"ad.png","ir.png":"vc.png","is.png":"mm.png","it.png":"tg.png","je.png":"mq.png","jm.png":"dk.png","jo.png":"gb-eng.png","jp.png":"vu.png","ke.png":"sk.png","kg.png":"il.png","kh.png":"va.png","ki.png":"dj.png","km.png":"ws.png","kn.png":"il.png","kp.png":"va.png","kr.png":"la.png","kw.png":"ad.png","ky.png":"pf.png","kz.png":"al.png","la.png":"fo.png","lb.png":"se.png","lc.png":"tt.png","li.png":"bl.png","lk.png":"at.png","lr.png":"mn.png","ls.png":"ki.png","lt.png":"io.png","lu.png":"ad.png","lv.png":"pm.png","ly.png":"je.png","ma.png":"fo.png","mc.png":"br.png","md.png":"lr.png","me.png":"il.png","mf.png":"tg.png","mg.png":"ht.png","mh.png":"to.png","mk.png":"il.png","ml.png":"fo.png","mm.png":"io.png","mn.png":"lr.png","mo.png":"bh.png","mp.png":"at.png","mq.png":"je.png","mr.png":"gb.png","ms.png":"pf.png","mt.png":"gu.png","mu.png":"je.png","mv.png":"fo.png","mw.png":"fo.png","mx.png":"gh.png","my.png":"mq.png","mz.png":"py.png","na.png":"pl.png","nc.png":"dk.png","ne.png":"li.png","nf.png":"vn.png","ng.png":"tt.png","ni.png":"al.png","nl.png":"tt.png","no.png":"gw.png","np.png":"lu.png","nr.png":"mt.png","nu.png":"tt.png","nz.png":"pf.png","om.png":"ga.png","pa.png":"vu.png","pe.png":"br.png","pf.png":"gu.png","pg.png":"il.png","ph.png":"gb-wls.png","pk.png":"al.png","pl.png":"vu.png","pm.png":"ws.png","pn.png":"lb.png","pr.png":"sz.png","ps.png":"ad.png","pt.png":"il.png","pw.png":"to.png","py.png":"mz.png","qa.png":"mv.png","re.png":"id.png","ro.png":"fo.png","rs.png":"se.png","ru.png":"ax.png","rw.png":"dk.png","sa.png":"pf.png","sb.png":"dk.png","sc.png":"fo.png","sd.png":"io.png","se.png":"at.png","sg.png":"br.png","sh.png":"pf.png","si.png":"ax.png","sj.png":"gw.png","sk.png":"br.png","sl.png":"tt.png","sm.png":"al.png","sn.png":"fo.png","so.png":"tt.png","sr.png":"gb.png","ss.png":"sk.png","st.png":"gb.png","sv.png":"al.png","sx.png":"li.png","sy.png":"ad.png","sz.png":"at.png","tc.png":"pf.png","td.png":"fo.png","tf.png":"bh.png","tg.png":"pl.png","th.png":"dk.png","tj.png":"sz.png","tk.png":"mt.png","tl.png":"fo.png","tm.png":"pf.png","tn.png":"gb-sct.png","to.png":"km.png","tr.png":"gb-sct.png","tt.png":"sl.png","tv.png":"al.png","tw.png":"fo.png","tz.png":"dk.png","ua.png":"gb-wls.png","ug.png":"gb-eng.png","um.png":"gh.png","us.png":"gh.png","uy.png":"ws.png","uz.png":"af.png","va.png":"kh.png","vc.png":"dk.png","ve.png":"je.png","vg.png":"pf.png","vi.png":"la.png","vn.png":"gb-sct.png","vu.png":"pl.png","wf.png":"km.png","ws.png":"fo.png","xk.png":"pe.png","ye.png":"ad.png","yt.png":"la.png","za.png":"gg.png","zm.png":"je.png","zw.png":"gr.png"}}]}
+</script>
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">🌍 World Flag Explorer</h1>
+<p class="subtitle lead">Discover flags by their colors, patterns, and shapes</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+  body {
+    background: linear-gradient(135deg, #f0f4ff 0%, #fef6ff 50%, #f0fdf4 100%);
+    min-height: 100vh;
+  }
+  #title-block-header {
+    background: linear-gradient(120deg, #1e3a8a, #4f46e5, #0ea5e9);
+    color: white;
+    padding: 2.2rem 2rem;
+    border-radius: 18px;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
+    text-align: center;
+  }
+  #title-block-header .title {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.3rem;
+  }
+  #title-block-header .subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .controls-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1.8rem;
+  }
+  .controls-bar form {
+    margin: 0 !important;
+    font-weight: 600;
+  }
+  .random-btn {
+    background: linear-gradient(135deg, #f59e0b, #ec4899);
+    color: white;
+    border: none;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .random-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(236, 72, 153, 0.4);
+  }
+  .hero-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    margin-bottom: 2.2rem;
+  }
+  .hero-flag-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    padding: 1.2rem;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+  }
+  .hero-flag-wrap img {
+    max-width: 480px;
+    max-height: 290px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  }
+  .badge-pill {
+    display: inline-block;
+    background: #eef2ff;
+    color: #4338ca;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0 1rem 0;
+  }
+  .section-heading h3 {
+    margin: 0;
+    font-weight: 800;
+    color: #1e293b;
+  }
+  .hint-text {
+    font-size: 0.88rem;
+    color: #64748b;
+  }
+  .flag-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .flag-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.1rem;
+    text-align: center;
+    border: 2px solid transparent;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .flag-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 26px rgba(79, 70, 229, 0.16);
+    border-color: #6366f1;
+  }
+  .flag-card.opposite-card:hover {
+    border-color: #f43f5e;
+    box-shadow: 0 12px 26px rgba(244, 63, 94, 0.18);
+  }
+  .flag-card-img-box {
+    height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .flag-card-img-box img {
+    max-width: 100%;
+    max-height: 125px;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  .rank-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.4rem;
+  }
+  .rank-sim {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  .rank-opp {
+    background: #ffe4e6;
+    color: #be123c;
+  }
+</style>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="259" data-source-offset="-85"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 258;"><span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a>regionNames <span class="op">=</span> <span class="kw">new</span> <span class="bu">Intl</span><span class="op">.</span><span class="fu">DisplayNames</span>([<span class="st">"en"</span>]<span class="op">,</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"region"</span> })</span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>customNames <span class="op">=</span> ({</span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gb-eng"</span><span class="op">:</span> <span class="st">"England"</span><span class="op">,</span></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gb-nir"</span><span class="op">:</span> <span class="st">"Northern Ireland"</span><span class="op">,</span></span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gb-sct"</span><span class="op">:</span> <span class="st">"Scotland"</span><span class="op">,</span></span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gb-wls"</span><span class="op">:</span> <span class="st">"Wales"</span></span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>getName <span class="op">=</span> (file) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> code <span class="op">=</span> file<span class="op">.</span><span class="fu">replace</span>(<span class="st">".png"</span><span class="op">,</span> <span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> customNames[code] <span class="op">??</span> regionNames<span class="op">.</span><span class="fu">of</span>(code<span class="op">.</span><span class="fu">toUpperCase</span>()) <span class="op">??</span> code<span class="op">;</span></span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a><span class="co">// Build a sorted list of { name, file } objects for the dropdown</span></span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a>flags <span class="op">=</span> flag_files</span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">map</span>(file <span class="kw">=&gt;</span> ({ <span class="dt">name</span><span class="op">:</span> <span class="fu">getName</span>(file)<span class="op">,</span> file }))</span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">name</span><span class="op">.</span><span class="fu">localeCompare</span>(b<span class="op">.</span><span class="at">name</span>))</span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a><span class="co">// Dropdown menu for selecting a flag</span></span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a>viewof selected <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(flags<span class="op">,</span> {</span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"🔍 Choose a country or territory:"</span><span class="op">,</span></span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> flags<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">file</span> <span class="op">===</span> <span class="st">"us.png"</span>)</span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a><span class="co">// Helper to jump to any flag when a card or the random button is clicked</span></span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a>selectFlag <span class="op">=</span> (file) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> target <span class="op">=</span> flags<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">file</span> <span class="op">===</span> file)<span class="op">;</span></span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (target) {</span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a>    viewof selected<span class="op">.</span><span class="at">value</span> <span class="op">=</span> target<span class="op">;</span></span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a>    viewof selected<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> { <span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span> }))<span class="op">;</span></span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a><span class="co">// Surprise Me button to pick a random flag</span></span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="random-btn" type="button"&gt;🎲 Surprise Me with a Random Flag!&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> randomItem <span class="op">=</span> flags[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> flags<span class="op">.</span><span class="at">length</span>)]<span class="op">;</span></span>
+<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a>    <span class="fu">selectFlag</span>(randomItem<span class="op">.</span><span class="at">file</span>)<span class="op">;</span></span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-bottom: 1.5rem;"&gt;</span><span class="sc">${</span>btn<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="305" data-source-offset="-1513"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 304;"><span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a>similarFlags <span class="op">=</span> similar_map[selected<span class="op">.</span><span class="at">file</span>]<span class="op">.</span><span class="fu">map</span>((file<span class="op">,</span> idx) <span class="kw">=&gt;</span> ({</span>
+<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a>  file<span class="op">,</span></span>
+<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a>  <span class="dt">name</span><span class="op">:</span> <span class="fu">getName</span>(file)<span class="op">,</span></span>
+<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rank</span><span class="op">:</span> idx <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a>mostDiffFlag <span class="op">=</span> ({</span>
+<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a>  <span class="dt">file</span><span class="op">:</span> most_diff_map[selected<span class="op">.</span><span class="at">file</span>]<span class="op">,</span></span>
+<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a>  <span class="dt">name</span><span class="op">:</span> <span class="fu">getName</span>(most_diff_map[selected<span class="op">.</span><span class="at">file</span>])</span>
+<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a><span class="co">// Display the interactive dashboard</span></span>
+<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
+<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="hero-card"&gt;</span></span>
+<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="hero-flag-wrap"&gt;</span></span>
+<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;img src="w2560/</span><span class="sc">${</span>selected<span class="op">.</span><span class="at">file</span><span class="sc">}</span><span class="vs">" alt="</span><span class="sc">${</span>selected<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs"> flag"&gt;</span></span>
+<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;h2 style="margin: 1rem 0 0.2rem 0; font-weight: 800; color: #0f172a;"&gt;</span></span>
+<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>selected<span class="op">.</span><span class="at">name</span><span class="sc">}</span></span>
+<span id="cb2-325"><a href="#cb2-325" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;span class="badge-pill"&gt;</span><span class="sc">${</span>selected<span class="op">.</span><span class="at">file</span><span class="op">.</span><span class="fu">replace</span>(<span class="st">".png"</span><span class="op">,</span> <span class="st">""</span>)<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb2-326"><a href="#cb2-326" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/h2&gt;</span></span>
+<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="section-heading"&gt;</span></span>
+<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;h3&gt;✨ 3 Flags with Similar Color &amp;amp; Design&lt;/h3&gt;</span></span>
+<span id="cb2-331"><a href="#cb2-331" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;span class="hint-text"&gt;💡 Click any flag card to explore it!&lt;/span&gt;</span></span>
+<span id="cb2-332"><a href="#cb2-332" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb2-333"><a href="#cb2-333" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="flag-grid"&gt;</span></span>
+<span id="cb2-334"><a href="#cb2-334" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>similarFlags<span class="op">.</span><span class="fu">map</span>(f <span class="kw">=&gt;</span> {</span>
+<span id="cb2-335"><a href="#cb2-335" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> card <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb2-336"><a href="#cb2-336" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;div class="flag-card" title="Click to view </span><span class="sc">${</span>f<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">"&gt;</span></span>
+<span id="cb2-337"><a href="#cb2-337" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span class="rank-tag rank-sim"&gt;Match #</span><span class="sc">${</span>f<span class="op">.</span><span class="at">rank</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb2-338"><a href="#cb2-338" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;div class="flag-card-img-box"&gt;</span></span>
+<span id="cb2-339"><a href="#cb2-339" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;img src="w2560/</span><span class="sc">${</span>f<span class="op">.</span><span class="at">file</span><span class="sc">}</span><span class="vs">" alt="</span><span class="sc">${</span>f<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs"> flag"&gt;</span></span>
+<span id="cb2-340"><a href="#cb2-340" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/div&gt;</span></span>
+<span id="cb2-341"><a href="#cb2-341" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;div style="font-weight: 700; font-size: 1.02rem; color: #1e293b;"&gt;</span><span class="sc">${</span>f<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb2-342"><a href="#cb2-342" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;div style="color: #64748b; font-size: 0.82rem;"&gt;</span><span class="sc">${</span>f<span class="op">.</span><span class="at">file</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb2-343"><a href="#cb2-343" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;/div&gt;</span></span>
+<span id="cb2-344"><a href="#cb2-344" aria-hidden="true" tabindex="-1"></a><span class="vs">        `</span><span class="op">;</span></span>
+<span id="cb2-345"><a href="#cb2-345" aria-hidden="true" tabindex="-1"></a>        card<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="fu">selectFlag</span>(f<span class="op">.</span><span class="at">file</span>)<span class="op">;</span></span>
+<span id="cb2-346"><a href="#cb2-346" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> card<span class="op">;</span></span>
+<span id="cb2-347"><a href="#cb2-347" aria-hidden="true" tabindex="-1"></a>      })<span class="sc">}</span></span>
+<span id="cb2-348"><a href="#cb2-348" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb2-349"><a href="#cb2-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-350"><a href="#cb2-350" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="section-heading" style="margin-top: 2.5rem;"&gt;</span></span>
+<span id="cb2-351"><a href="#cb2-351" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;h3&gt;⚡ Most Different Flag in Color &amp;amp; Shape&lt;/h3&gt;</span></span>
+<span id="cb2-352"><a href="#cb2-352" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;span class="hint-text"&gt;Opposite in palette, layout &amp;amp; proportions&lt;/span&gt;</span></span>
+<span id="cb2-353"><a href="#cb2-353" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb2-354"><a href="#cb2-354" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="max-width: 320px;"&gt;</span></span>
+<span id="cb2-355"><a href="#cb2-355" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb2-356"><a href="#cb2-356" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> oppCard <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb2-357"><a href="#cb2-357" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;div class="flag-card opposite-card" title="Click to view </span><span class="sc">${</span>mostDiffFlag<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">"&gt;</span></span>
+<span id="cb2-358"><a href="#cb2-358" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span class="rank-tag rank-opp"&gt;Polar Opposite&lt;/span&gt;</span></span>
+<span id="cb2-359"><a href="#cb2-359" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;div class="flag-card-img-box"&gt;</span></span>
+<span id="cb2-360"><a href="#cb2-360" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;img src="w2560/</span><span class="sc">${</span>mostDiffFlag<span class="op">.</span><span class="at">file</span><span class="sc">}</span><span class="vs">" alt="</span><span class="sc">${</span>mostDiffFlag<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs"> flag"&gt;</span></span>
+<span id="cb2-361"><a href="#cb2-361" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/div&gt;</span></span>
+<span id="cb2-362"><a href="#cb2-362" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;div style="font-weight: 700; font-size: 1.02rem; color: #1e293b;"&gt;</span><span class="sc">${</span>mostDiffFlag<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb2-363"><a href="#cb2-363" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;div style="color: #64748b; font-size: 0.82rem;"&gt;</span><span class="sc">${</span>mostDiffFlag<span class="op">.</span><span class="at">file</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb2-364"><a href="#cb2-364" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;/div&gt;</span></span>
+<span id="cb2-365"><a href="#cb2-365" aria-hidden="true" tabindex="-1"></a><span class="vs">        `</span><span class="op">;</span></span>
+<span id="cb2-366"><a href="#cb2-366" aria-hidden="true" tabindex="-1"></a>        oppCard<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="fu">selectFlag</span>(mostDiffFlag<span class="op">.</span><span class="at">file</span>)<span class="op">;</span></span>
+<span id="cb2-367"><a href="#cb2-367" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> oppCard<span class="op">;</span></span>
+<span id="cb2-368"><a href="#cb2-368" aria-hidden="true" tabindex="-1"></a>      })()<span class="sc">}</span></span>
+<span id="cb2-369"><a href="#cb2-369" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb2-370"><a href="#cb2-370" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-371"><a href="#cb2-371" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb2-372"><a href="#cb2-372" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-10" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+
+</main>
+<!-- /main column -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIENvbnZlcnQgMi1sZXR0ZXIgSVNPIGNvZGVzIChsaWtlIFwidXNcIikgaW50byByZWFkYWJsZSBuYW1lcyAobGlrZSBcIlVuaXRlZCBTdGF0ZXNcIilcbnJlZ2lvbk5hbWVzID0gbmV3IEludGwuRGlzcGxheU5hbWVzKFtcImVuXCJdLCB7IHR5cGU6IFwicmVnaW9uXCIgfSlcblxuY3VzdG9tTmFtZXMgPSAoe1xuICBcImdiLWVuZ1wiOiBcIkVuZ2xhbmRcIixcbiAgXCJnYi1uaXJcIjogXCJOb3J0aGVybiBJcmVsYW5kXCIsXG4gIFwiZ2Itc2N0XCI6IFwiU2NvdGxhbmRcIixcbiAgXCJnYi13bHNcIjogXCJXYWxlc1wiXG59KVxuXG5nZXROYW1lID0gKGZpbGUpID0+IHtcbiAgY29uc3QgY29kZSA9IGZpbGUucmVwbGFjZShcIi5wbmdcIiwgXCJcIik7XG4gIHJldHVybiBjdXN0b21OYW1lc1tjb2RlXSA/PyByZWdpb25OYW1lcy5vZihjb2RlLnRvVXBwZXJDYXNlKCkpID8/IGNvZGU7XG59XG5cbi8vIEJ1aWxkIGEgc29ydGVkIGxpc3Qgb2YgeyBuYW1lLCBmaWxlIH0gb2JqZWN0cyBmb3IgdGhlIGRyb3Bkb3duXG5mbGFncyA9IGZsYWdfZmlsZXNcbiAgLm1hcChmaWxlID0+ICh7IG5hbWU6IGdldE5hbWUoZmlsZSksIGZpbGUgfSkpXG4gIC5zb3J0KChhLCBiKSA9PiBhLm5hbWUubG9jYWxlQ29tcGFyZShiLm5hbWUpKVxuXG4vLyBEcm9wZG93biBtZW51IGZvciBzZWxlY3RpbmcgYSBmbGFnXG52aWV3b2Ygc2VsZWN0ZWQgPSBJbnB1dHMuc2VsZWN0KGZsYWdzLCB7XG4gIGxhYmVsOiBcIvCflI0gQ2hvb3NlIGEgY291bnRyeSBvciB0ZXJyaXRvcnk6XCIsXG4gIGZvcm1hdDogZCA9PiBkLm5hbWUsXG4gIHZhbHVlOiBmbGFncy5maW5kKGQgPT4gZC5maWxlID09PSBcInVzLnBuZ1wiKVxufSlcblxuLy8gSGVscGVyIHRvIGp1bXAgdG8gYW55IGZsYWcgd2hlbiBhIGNhcmQgb3IgdGhlIHJhbmRvbSBidXR0b24gaXMgY2xpY2tlZFxuc2VsZWN0RmxhZyA9IChmaWxlKSA9PiB7XG4gIGNvbnN0IHRhcmdldCA9IGZsYWdzLmZpbmQoZCA9PiBkLmZpbGUgPT09IGZpbGUpO1xuICBpZiAodGFyZ2V0KSB7XG4gICAgdmlld29mIHNlbGVjdGVkLnZhbHVlID0gdGFyZ2V0O1xuICAgIHZpZXdvZiBzZWxlY3RlZC5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudChcImlucHV0XCIsIHsgYnViYmxlczogdHJ1ZSB9KSk7XG4gIH1cbn1cblxuLy8gU3VycHJpc2UgTWUgYnV0dG9uIHRvIHBpY2sgYSByYW5kb20gZmxhZ1xue1xuICBjb25zdCBidG4gPSBodG1sYDxidXR0b24gY2xhc3M9XCJyYW5kb20tYnRuXCIgdHlwZT1cImJ1dHRvblwiPvCfjrIgU3VycHJpc2UgTWUgd2l0aCBhIFJhbmRvbSBGbGFnITwvYnV0dG9uPmA7XG4gIGJ0bi5vbmNsaWNrID0gKCkgPT4ge1xuICAgIGNvbnN0IHJhbmRvbUl0ZW0gPSBmbGFnc1tNYXRoLmZsb29yKE1hdGgucmFuZG9tKCkgKiBmbGFncy5sZW5ndGgpXTtcbiAgICBzZWxlY3RGbGFnKHJhbmRvbUl0ZW0uZmlsZSk7XG4gIH07XG4gIHJldHVybiBodG1sYDxkaXYgc3R5bGU9XCJ0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi1ib3R0b206IDEuNXJlbTtcIj4ke2J0bn08L2Rpdj5gO1xufVxuXG4vLyBMb29rIHVwIHRoZSAzIG1vc3Qgc2ltaWxhciBmbGFncyBhbmQgdGhlIDEgbW9zdCBkaWZmZXJlbnQgZmxhZ1xuc2ltaWxhckZsYWdzID0gc2ltaWxhcl9tYXBbc2VsZWN0ZWQuZmlsZV0ubWFwKChmaWxlLCBpZHgpID0+ICh7XG4gIGZpbGUsXG4gIG5hbWU6IGdldE5hbWUoZmlsZSksXG4gIHJhbms6IGlkeCArIDFcbn0pKVxuXG5tb3N0RGlmZkZsYWcgPSAoe1xuICBmaWxlOiBtb3N0X2RpZmZfbWFwW3NlbGVjdGVkLmZpbGVdLFxuICBuYW1lOiBnZXROYW1lKG1vc3RfZGlmZl9tYXBbc2VsZWN0ZWQuZmlsZV0pXG59KVxuXG4vLyBEaXNwbGF5IHRoZSBpbnRlcmFjdGl2ZSBkYXNoYm9hcmRcbntcbiAgY29uc3QgY29udGFpbmVyID0gaHRtbGA8ZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJoZXJvLWNhcmRcIj5cbiAgICAgIDxkaXYgY2xhc3M9XCJoZXJvLWZsYWctd3JhcFwiPlxuICAgICAgICA8aW1nIHNyYz1cIncyNTYwLyR7c2VsZWN0ZWQuZmlsZX1cIiBhbHQ9XCIke3NlbGVjdGVkLm5hbWV9IGZsYWdcIj5cbiAgICAgIDwvZGl2PlxuICAgICAgPGgyIHN0eWxlPVwibWFyZ2luOiAxcmVtIDAgMC4ycmVtIDA7IGZvbnQtd2VpZ2h0OiA4MDA7IGNvbG9yOiAjMGYxNzJhO1wiPlxuICAgICAgICAke3NlbGVjdGVkLm5hbWV9XG4gICAgICAgIDxzcGFuIGNsYXNzPVwiYmFkZ2UtcGlsbFwiPiR7c2VsZWN0ZWQuZmlsZS5yZXBsYWNlKFwiLnBuZ1wiLCBcIlwiKS50b1VwcGVyQ2FzZSgpfTwvc3Bhbj5cbiAgICAgIDwvaDI+XG4gICAgPC9kaXY+XG5cbiAgICA8ZGl2IGNsYXNzPVwic2VjdGlvbi1oZWFkaW5nXCI+XG4gICAgICA8aDM+4pyoIDMgRmxhZ3Mgd2l0aCBTaW1pbGFyIENvbG9yICZhbXA7IERlc2lnbjwvaDM+XG4gICAgICA8c3BhbiBjbGFzcz1cImhpbnQtdGV4dFwiPvCfkqEgQ2xpY2sgYW55IGZsYWcgY2FyZCB0byBleHBsb3JlIGl0ITwvc3Bhbj5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IGNsYXNzPVwiZmxhZy1ncmlkXCI+XG4gICAgICAke3NpbWlsYXJGbGFncy5tYXAoZiA9PiB7XG4gICAgICAgIGNvbnN0IGNhcmQgPSBodG1sYFxuICAgICAgICAgIDxkaXYgY2xhc3M9XCJmbGFnLWNhcmRcIiB0aXRsZT1cIkNsaWNrIHRvIHZpZXcgJHtmLm5hbWV9XCI+XG4gICAgICAgICAgICA8c3BhbiBjbGFzcz1cInJhbmstdGFnIHJhbmstc2ltXCI+TWF0Y2ggIyR7Zi5yYW5rfTwvc3Bhbj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmbGFnLWNhcmQtaW1nLWJveFwiPlxuICAgICAgICAgICAgICA8aW1nIHNyYz1cIncyNTYwLyR7Zi5maWxlfVwiIGFsdD1cIiR7Zi5uYW1lfSBmbGFnXCI+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgc3R5bGU9XCJmb250LXdlaWdodDogNzAwOyBmb250LXNpemU6IDEuMDJyZW07IGNvbG9yOiAjMWUyOTNiO1wiPiR7Zi5uYW1lfTwvZGl2PlxuICAgICAgICAgICAgPGRpdiBzdHlsZT1cImNvbG9yOiAjNjQ3NDhiOyBmb250LXNpemU6IDAuODJyZW07XCI+JHtmLmZpbGV9PC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIGA7XG4gICAgICAgIGNhcmQub25jbGljayA9ICgpID0+IHNlbGVjdEZsYWcoZi5maWxlKTtcbiAgICAgICAgcmV0dXJuIGNhcmQ7XG4gICAgICB9KX1cbiAgICA8L2Rpdj5cblxuICAgIDxkaXYgY2xhc3M9XCJzZWN0aW9uLWhlYWRpbmdcIiBzdHlsZT1cIm1hcmdpbi10b3A6IDIuNXJlbTtcIj5cbiAgICAgIDxoMz7imqEgTW9zdCBEaWZmZXJlbnQgRmxhZyBpbiBDb2xvciAmYW1wOyBTaGFwZTwvaDM+XG4gICAgICA8c3BhbiBjbGFzcz1cImhpbnQtdGV4dFwiPk9wcG9zaXRlIGluIHBhbGV0dGUsIGxheW91dCAmYW1wOyBwcm9wb3J0aW9uczwvc3Bhbj5cbiAgICA8L2Rpdj5cbiAgICA8ZGl2IHN0eWxlPVwibWF4LXdpZHRoOiAzMjBweDtcIj5cbiAgICAgICR7KCgpID0+IHtcbiAgICAgICAgY29uc3Qgb3BwQ2FyZCA9IGh0bWxgXG4gICAgICAgICAgPGRpdiBjbGFzcz1cImZsYWctY2FyZCBvcHBvc2l0ZS1jYXJkXCIgdGl0bGU9XCJDbGljayB0byB2aWV3ICR7bW9zdERpZmZGbGFnLm5hbWV9XCI+XG4gICAgICAgICAgICA8c3BhbiBjbGFzcz1cInJhbmstdGFnIHJhbmstb3BwXCI+UG9sYXIgT3Bwb3NpdGU8L3NwYW4+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmxhZy1jYXJkLWltZy1ib3hcIj5cbiAgICAgICAgICAgICAgPGltZyBzcmM9XCJ3MjU2MC8ke21vc3REaWZmRmxhZy5maWxlfVwiIGFsdD1cIiR7bW9zdERpZmZGbGFnLm5hbWV9IGZsYWdcIj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPGRpdiBzdHlsZT1cImZvbnQtd2VpZ2h0OiA3MDA7IGZvbnQtc2l6ZTogMS4wMnJlbTsgY29sb3I6ICMxZTI5M2I7XCI+JHttb3N0RGlmZkZsYWcubmFtZX08L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgc3R5bGU9XCJjb2xvcjogIzY0NzQ4YjsgZm9udC1zaXplOiAwLjgycmVtO1wiPiR7bW9zdERpZmZGbGFnLmZpbGV9PC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIGA7XG4gICAgICAgIG9wcENhcmQub25jbGljayA9ICgpID0+IHNlbGVjdEZsYWcobW9zdERpZmZGbGFnLmZpbGUpO1xuICAgICAgICByZXR1cm4gb3BwQ2FyZDtcbiAgICAgIH0pKCl9XG4gICAgPC9kaXY+XG4gIDwvZGl2PmA7XG4gIHJldHVybiBjb250YWluZXI7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NlbGVjdGVkJykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../..";
+window._ojs.paths.runtimeToRoot = "../../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
